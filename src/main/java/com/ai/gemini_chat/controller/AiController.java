@@ -17,7 +17,7 @@ public class AiController {
 
     private final QnaService qnaService;
 
-    @RequestMapping("/api/v1/chat")
+
     public ResponseEntity<String> askQuestion(@RequestBody Map<String,String> payload){
 
         String question = payload.get("question");
