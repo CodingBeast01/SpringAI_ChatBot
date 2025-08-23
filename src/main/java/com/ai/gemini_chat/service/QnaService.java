@@ -24,12 +24,24 @@ public class QnaService {
 
     public String getAnswer(String question) {
 // construct the request PAyload
-        Map<String,Object> requestBody = Map.of(
-                "contents",new Object[]
-                        {Map.of("text","question")}
-        )
-                
-
+        Map<String, Object> requestBody = Map.of(
+                                            "contents", new Object[]{
+                                           Map.of("parts", new Object[] {
+                                          Map.of("text",question)
+                                   })
+                }
+                );
+        webClient.post()
+                .uri(geminiApiUrl+geminiApiKey)
+                .header("Content-Type","application/json")
+                .bodyValue(requestBody)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
         return "";
+
+
+
+
     }
 }
