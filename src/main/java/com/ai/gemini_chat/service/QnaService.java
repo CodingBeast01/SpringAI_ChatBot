@@ -31,14 +31,15 @@ public class QnaService {
                                    })
                 }
                 );
-        webClient.post()
+       String reponse =  webClient.post()
                 .uri(geminiApiUrl+geminiApiKey)
                 .header("Content-Type","application/json")
                 .bodyValue(requestBody)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
-        return "";
+
+       return reponse;
 
 
 
