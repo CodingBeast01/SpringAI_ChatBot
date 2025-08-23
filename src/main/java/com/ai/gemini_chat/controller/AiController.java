@@ -20,7 +20,7 @@ public class AiController {
 
     private final QnaService qnaService;
 
-   @PostMapping("/ask")
+    @PostMapping(value = "/ask")
     public ResponseEntity<String> askQuestion(@RequestBody Map<String,String> payload){
 
         String question = payload.get("question");
